@@ -1,0 +1,24 @@
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+# http:
+#   base_url: example.duckdns.org:8123
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+yeelight:
+  devices:
+    192.168.178.20:
+      name: Lamp Hal
+      model: color2
+    192.168.178.13:
+      name: Lamp Studeerkamer
+      model: color2

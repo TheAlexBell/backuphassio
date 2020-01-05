@@ -1,0 +1,37 @@
+  # Door de week licht aan om 7.
+  - alias: 'Ochtendlicht op een werkdag'
+    trigger:
+      - platform: time
+        at: "07:10:00"
+    condition:
+      - condition: time
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+    action:
+      - service: yeelight.set_color_temp_scene
+        data:
+          entity_id: light.lamp_hal, light.lamp_studeerkamer
+          kelvin: 6500
+          brightness: 100
+  # s-Avonds licht uit om 11.
+  - alias: 'Licht uit avond'
+    trigger:
+      - platform: time
+        at: "23:00:00"
+    action:
+      - service: light.turn_off
+        data:
+          entity_id: light.lamp_hal, light.lamp_studeerkamer
+  # s-morgens licht uit om 7:40.
+  - alias: 'Licht uit ochtend werkdag'
+    trigger:
+      - platform: time
+        at: "07:40:00"
+    action:
+      - service: light.turn_off
+        data:
+          entity_id: light.lamp_hal, light.lamp_studeerkamer
