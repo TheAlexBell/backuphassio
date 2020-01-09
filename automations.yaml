@@ -1,8 +1,84 @@
-  # Door de week licht aan om 7.
-  - alias: 'Ochtendlicht op een werkdag'
+  # Door de week licht aan om 7stap1.
+  - alias: 'Ochtendlicht op een werkdag stap 1'
     trigger:
       - platform: time
         at: "07:10:00"
+    condition:
+      - condition: time
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+    action:
+      - service: yeelight.set_color_temp_scene
+        data:
+          entity_id: light.lamp_hal, light.lamp_studeerkamer
+          kelvin: 6500
+          brightness: 20
+  # Door de week licht aan om 7stap2.
+  - alias: 'Ochtendlicht op een werkdag stap 2'
+    trigger:
+      - platform: time
+        at: "07:11:00"
+    condition:
+      - condition: time
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+    action:
+      - service: yeelight.set_color_temp_scene
+        data:
+          entity_id: light.lamp_hal, light.lamp_studeerkamer
+          kelvin: 6500
+          brightness: 40
+  # Door de week licht aan om 7stap3.
+  - alias: 'Ochtendlicht op een werkdag stap 3'
+    trigger:
+      - platform: time
+        at: "07:12:00"
+    condition:
+      - condition: time
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+    action:
+      - service: yeelight.set_color_temp_scene
+        data:
+          entity_id: light.lamp_hal, light.lamp_studeerkamer
+          kelvin: 6500
+          brightness: 60
+  # Door de week licht aan om 7stap4.
+  - alias: 'Ochtendlicht op een werkdag stap 4'
+    trigger:
+      - platform: time
+        at: "07:13:00"
+    condition:
+      - condition: time
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+    action:
+      - service: yeelight.set_color_temp_scene
+        data:
+          entity_id: light.lamp_hal, light.lamp_studeerkamer
+          kelvin: 6500
+          brightness: 80
+  # Door de week licht aan om 7stap5.
+  - alias: 'Ochtendlicht op een werkdag stap 5'
+    trigger:
+      - platform: time
+        at: "07:14:00"
     condition:
       - condition: time
         weekday:
@@ -35,3 +111,20 @@
       - service: light.turn_off
         data:
           entity_id: light.lamp_hal, light.lamp_studeerkamer
+  # Warme eitjes in de ochtend.
+  - alias: 'Warme eitjes in de ochtend'
+    trigger:
+      - platform: time
+        at: "19:42:00"
+    condition:
+      - condition: time
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+    action:
+        data:
+          entity_id: switch.tradfri_outlet
+        service: switch.turn_on
