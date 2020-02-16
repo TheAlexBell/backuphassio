@@ -128,3 +128,107 @@
         data:
           entity_id: switch.tradfri_outlet
         service: switch.turn_on
+# Xiami knop met lamp hal
+  - alias: 'Xiaomi knop hal'
+    trigger:
+      - platform: event
+        event_type: deconz_event
+        event_data:
+          id: "2_knops_rocker_gang"
+          event: 2002
+    condition:
+      - condition: state
+        entity_id: light.lamp_hal
+        state: 'off'
+    action:
+      - service: yeelight.set_color_temp_scene
+        data:
+          entity_id: light.lamp_hal
+          kelvin: 6500
+          brightness: 100
+# Xiami knop met lamp hal2
+  - alias: 'Xiaomi knop hal2'
+    trigger:
+      - platform: event
+        event_type: deconz_event
+        event_data:
+          id: "2_knops_rocker_gang"
+          event: 2002
+    condition:
+      - condition: state
+        entity_id: light.lamp_hal
+        state: 'on'
+    action:
+      - service: light.turn_off
+        data:
+          entity_id: light.lamp_hal
+# Xiami knop met lamp studeerkamer
+  - alias: 'Xiaomi knop studeerkamer'
+    trigger:
+      - platform: event
+        event_type: deconz_event
+        event_data:
+          id: "2_knops_rocker_gang"
+          event: 1002
+    condition:
+      - condition: state
+        entity_id: light.lamp_studeerkamer
+        state: 'off'
+    action:
+      - service: yeelight.set_color_temp_scene
+        data:
+          entity_id: light.lamp_studeerkamer
+          kelvin: 6500
+          brightness: 100
+# Xiami knop met lamp studeerkamer2
+  - alias: 'Xiaomi knop studeerkamer2'
+    trigger:
+      - platform: event
+        event_type: deconz_event
+        event_data:
+          id: "2_knops_rocker_gang"
+          event: 1002
+    condition:
+      - condition: state
+        entity_id: light.lamp_studeerkamer
+        state: 'on'
+    action:
+      - service: light.turn_off
+        data:
+          entity_id: light.lamp_studeerkamer
+# Xiami knop met lamp hal3
+  - alias: 'Xiaomi knop hal'
+    trigger:
+      - platform: event
+        event_type: deconz_event
+        event_data:
+          id: "2_knops_rocker_gang"
+          event: 2004
+    condition:
+      - condition: state
+        entity_id: light.lamp_hal
+        state: 'off'
+    action:
+      - service: yeelight.set_color_temp_scene
+        data:
+          entity_id: light.lamp_hal
+          kelvin: 1800
+          brightness: 75
+# Xiami knop met lamp studeerkamer3
+  - alias: 'Xiaomi knop studeerkamer'
+    trigger:
+      - platform: event
+        event_type: deconz_event
+        event_data:
+          id: "2_knops_rocker_gang"
+          event: 1004
+    condition:
+      - condition: state
+        entity_id: light.lamp_studeerkamer
+        state: 'off'
+    action:
+      - service: yeelight.set_color_temp_scene
+        data:
+          entity_id: light.lamp_studeerkamer
+          kelvin: 1800
+          brightness: 75
